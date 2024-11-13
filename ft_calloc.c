@@ -17,14 +17,15 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void		*ret;
 	long long	overflow_check;
 
-	overflow_check = nmemb * size;
 	if (!size || !nmemb)
 		return (malloc(1));
-	if ( nmemb != overflow_check / size || nmemb <= 0 || size <= 0)
+	overflow_check = nmemb * size;
+	if ( nmemb != overflow_check / size)
 		return (NULL);
-	ret = malloc(nmemb * size);
+	ret = malloc(overflow_check);
 	if (!ret)
 		return (NULL);
-	ft_bzero(ret, nmemb);
+	else
+		ft_bzero(ret, overflow_check);
 	return (ret);
 }

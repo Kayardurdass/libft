@@ -30,22 +30,23 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		i;
 	int		j;
 	int		k;
-	int		len;
 	char	*ret;
 
-	i = -1;
+	i = 0;
 	if (!s1 || !set)
 		return (NULL);
-	while (s1[++i] && ft_is_in_set(s1[i], set))
-		len += ft_is_in_set(s1[i], set);
+	while (s1[i] && ft_is_in_set(s1[i], set))
+		i++;
+	if (i == (int)ft_strlen(s1))
+		return (calloc(1, 1));
 	j = ft_strlen(s1);
-	while (--j >= 0 && ft_is_in_set(s1[j], set))
-		len += ft_is_in_set(s1[j], set);
-	ret = (char *)calloc(sizeof(char),  (ft_strlen(s1) - len + 1));
+	while (j > i && ft_is_in_set(s1[j - 1], set) )
+		j--;
+	ret = (char *)calloc((j - i + 1), sizeof(char));
 	if (!ret)
 		return (NULL);
 	k = -1;
-	while (i < j && s1[i])
+	while (i < j)
 		ret[++k] = s1[i++];
 	return (ret);
 }
