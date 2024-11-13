@@ -6,7 +6,7 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 02:15:07 by uanglade          #+#    #+#             */
-/*   Updated: 2024/11/09 02:30:40 by uanglade         ###   ########.fr       */
+/*   Updated: 2024/11/13 03:09:46 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 
 void ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*first;
+	t_list	*temp;
 
-	if (!lst || !(*lst) || !del)
-		return ;
-	first = *lst;
-	while ((*lst)->next && *lst)
+	while (*lst)
 	{
-		*lst = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
 	}
-	del(first->content);
-	free(first);
-	first = NULL;
 }

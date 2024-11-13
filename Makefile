@@ -34,10 +34,22 @@ SRCS = ./ft_bzero.c\
 	   ./ft_putchar_fd.c\
 	   ./ft_putendl_fd.c\
 	   ./ft_putnbr_fd.c\
+	
+SRC_BONUS = ./ft_lstmap_bonus.c\
+			./ft_lstnew_bonus.c\
+			./ft_lstiter_bonus.c\
+			./ft_lstlast_bonus.c\
+			./ft_lstsize_bonus.c\
+			./ft_lstclear_bonus.c\
+			./ft_lstdelone_bonus.c\
+			./ft_lstadd_back_bonus.c\
+			./ft_lstadd_front_bonus.c\
 
 OBJS = ${SRCS:.c=.o}
 
-OBJSALL = ${SRCSALL:.c=.o} 
+SRCSALL = ${SRCS} ${SRC_BONUS}
+
+OBJSALL = ${SRCSALL:.c=.o}
 
 LIB = libft.a
 
@@ -46,12 +58,16 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I ./
 
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${LIB}:	${OBJS}
-		ar -rsc ${LIB} ${OBJS}
+	ar -rsc ${LIB} ${OBJS}
 
 all: 	${LIB}
+
+bonus:	${OBJSALL}
+	ar -rsc ${LIB} ${OBJSALL}
+	
 
 clean:	
 		rm -f ${OBJS}
@@ -61,4 +77,4 @@ fclean:	clean;
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

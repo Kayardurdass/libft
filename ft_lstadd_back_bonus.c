@@ -6,7 +6,7 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 02:05:31 by uanglade          #+#    #+#             */
-/*   Updated: 2024/11/09 02:33:21 by uanglade         ###   ########.fr       */
+/*   Updated: 2024/11/13 03:03:04 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		ft_lstlast(*lst)->next = new;
 	else
 		*lst = new;
-	new->next = NULL;
 }
