@@ -18,8 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	void	*tmp;
 
 	tmp = malloc(len);
-	if (!tmp)
-		return NULL;
+	if (!tmp || !dst || !src)
+		return (NULL);
 	i = -1;
 	while (++i < len)
 		*(char *)(tmp + i) = *(char *)(src + i);

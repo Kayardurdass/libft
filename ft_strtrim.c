@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (i == (int)ft_strlen(s1))
 		return (calloc(1, 1));
 	j = ft_strlen(s1);
-	while (j > i && ft_is_in_set(s1[j - 1], set) )
+	while (j > i && ft_is_in_set(s1[j - 1], set))
 		j--;
 	ret = (char *)calloc((j - i + 1), sizeof(char));
 	if (!ret)
@@ -50,4 +50,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 		ret[++k] = s1[i++];
 	return (ret);
 }
-

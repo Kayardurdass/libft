@@ -26,7 +26,7 @@ int	ft_getlen(char const *s, char c)
 			i++;
 		if (s[i] != c && s[i])
 		{
-			while(s[i] != c && s[i])
+			while (s[i] != c && s[i])
 				i++;
 			len++;
 		}
@@ -37,7 +37,7 @@ int	ft_getlen(char const *s, char c)
 int	ft_getnextlen(char const *s, char c)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
@@ -52,7 +52,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	ret = (char **)calloc((ft_getlen(s, c) + 1), sizeof(char*));
+	ret = (char **)calloc((ft_getlen(s, c) + 1), sizeof(char *));
 	if (!ret)
 		return (ret);
 	i = -1;

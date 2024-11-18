@@ -20,7 +20,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (!size || !nmemb)
 		return (malloc(1));
 	overflow_check = nmemb * size;
-	if ( nmemb != overflow_check / size)
+	if (nmemb != overflow_check / size)
 		return (NULL);
 	ret = malloc(overflow_check);
 	if (!ret)
