@@ -18,7 +18,7 @@ char	*ft_strndup(const char *s, int n)
 
 	if (!s)
 		return (NULL);
-	res = (char *)calloc((n + 1), sizeof(char));
+	res = (char *)ft_calloc((n + 1), sizeof(char));
 	if (!res)
 		return (NULL);
 	i = -1;

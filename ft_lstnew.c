@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalplha.c                                      :+:      :+:    :+:   */
+/*   ft_lstnew.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 20:15:51 by uanglade          #+#    #+#             */
-/*   Updated: 2024/10/03 20:46:40 by uanglade         ###   ########.fr       */
+/*   Created: 2024/11/09 01:48:33 by uanglade          #+#    #+#             */
+/*   Updated: 2024/11/09 01:54:12 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+t_list	*ft_lstnew(void *content)
 {
-	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
+	t_list	*ret;
+
+	ret = (t_list *)malloc(sizeof(t_list));
+	if (!ret)
+		return (NULL);
+	ret->next = NULL;
+	ret->content = content;
+	return (ret);
 }

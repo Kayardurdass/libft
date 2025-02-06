@@ -20,14 +20,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (len <= 0)
-		return (calloc(1, 1));
-	if (ft_strlen(s) < start)
-		return (calloc(1, 1));
-	if (start + len > ft_strlen(s) - start)
+	if (len <= 0 || ft_strlen(s) < start)
+		return (ft_calloc(1, 1));
+	if (start + len > ft_strlen(s))
 		ret = (char *)ft_calloc((ft_strlen(s) - start + 1), sizeof(char));
 	else
-		ret = (char *)ft_calloc(start + len, sizeof(char));
+		ret = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!ret)
 		return (NULL);
 	i = start;
