@@ -6,7 +6,7 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 23:24:27 by uanglade          #+#    #+#             */
-/*   Updated: 2024/11/13 02:50:41 by uanglade         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:43:02 by username         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <limits.h>
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 256
+# endif
 
 typedef struct s_list
 {
@@ -53,22 +56,26 @@ char	*ft_strndup(const char *src, int n);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(int n, int fd, int *ret);
+void	ft_putnbr_base_fd(int fd, long long n, const char *base, int *len);
+int		ft_putptr_fd(int fd, unsigned long int ptr);
+int		ft_fprintf_fd(int fd, const char *format, ...);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new_);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new_);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	*get_next_line(int fd);
 
 #endif // !LIBFT_h

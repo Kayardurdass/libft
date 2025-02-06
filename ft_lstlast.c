@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstlast.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 02:15:07 by uanglade          #+#    #+#             */
-/*   Updated: 2024/11/13 03:09:46 by uanglade         ###   ########.fr       */
+/*   Created: 2024/11/09 02:02:48 by uanglade          #+#    #+#             */
+/*   Updated: 2024/11/13 02:59:01 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*temp;
-
-	while (*lst)
-	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
-	}
+	if (!lst)
+		return (lst);
+	while (lst->next && lst)
+		lst = lst->next;
+	return (lst);
 }

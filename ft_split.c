@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_getlen(char const *s, char c)
+static int	ft_getlen(char const *s, char c)
 {
 	int	i;
 	int	len;
@@ -34,7 +33,7 @@ int	ft_getlen(char const *s, char c)
 	return (len);
 }
 
-int	ft_getnextlen(char const *s, char c)
+static int	ft_getnextlen(char const *s, char c)
 {
 	int	i;
 
@@ -42,6 +41,17 @@ int	ft_getnextlen(char const *s, char c)
 	while (s[i] && s[i] != c)
 		i++;
 	return (i);
+}
+
+static char	**ft_free_tab(char **strs, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len)
+		free(strs[i]);
+	free(strs);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -52,9 +62,9 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	ret = (char **)calloc((ft_getlen(s, c) + 1), sizeof(char *));
+	ret = (char **)ft_calloc((ft_getlen(s, c) + 1), sizeof(char *));
 	if (!ret)
-		return (ret);
+		return (NULL);
 	i = -1;
 	j = 0;
 	while (s[j] == c && s[j])
@@ -63,9 +73,9 @@ char	**ft_split(char const *s, char c)
 	{
 		ret[i] = ft_strndup(s + j, ft_getnextlen(s + j, c));
 		if (!ret[i])
-			return (NULL);
+			return (ft_free_tab(ret, i));
 		j += ft_getnextlen(s + j, c);
-		while (s[j] == c)
+		while (s[j] == c && s[j])
 			j++;
 	}
 	return (ret);

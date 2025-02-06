@@ -8,7 +8,7 @@ SRCS = ./ft_bzero.c\
 	   ./ft_toupper.c\
 	   ./ft_memset.c\
 	   ./ft_memcpy.c\
-	   ./ft_isalplha.c\
+	   ./ft_isalpha.c\
 	   ./ft_isalnum.c\
 	   ./ft_memmove.c\
 	   ./ft_isascii.c\
@@ -34,47 +34,54 @@ SRCS = ./ft_bzero.c\
 	   ./ft_putchar_fd.c\
 	   ./ft_putendl_fd.c\
 	   ./ft_putnbr_fd.c\
+	   ./ft_putnbr_base_fd.c\
+	   ./ft_printf.c\
+	   ./get_next_line.c\
 	
-SRC_BONUS = ./ft_lstmap_bonus.c\
-			./ft_lstnew_bonus.c\
-			./ft_lstiter_bonus.c\
-			./ft_lstlast_bonus.c\
-			./ft_lstsize_bonus.c\
-			./ft_lstclear_bonus.c\
-			./ft_lstdelone_bonus.c\
-			./ft_lstadd_back_bonus.c\
-			./ft_lstadd_front_bonus.c\
+SRC_BONUS = ./ft_lstmap.c\
+			./ft_lstnew.c\
+			./ft_lstiter.c\
+			./ft_lstlast.c\
+			./ft_lstsize.c\
+			./ft_lstclear.c\
+			./ft_lstdelone.c\
+			./ft_lstadd_back.c\
+			./ft_lstadd_front.c\
 
 OBJS = ${SRCS:.c=.o}
-
 SRCSALL = ${SRCS} ${SRC_BONUS}
-
 OBJSALL = ${SRCSALL:.c=.o}
 
-LIB = libft.a
+YELLOW = \x1B[33m
+GREEN = \x1B[32m
+CYAN = \x1B[36m
+RESET = \x1B[0m
 
-CC ?= clang
+NAME = libft.a
+CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -I ./
+CFLAGS = -Wall -Werror -Wextra
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${LIB}:	${OBJS}
-	ar -rsc ${LIB} ${OBJS}
+${NAME}: ${OBJS}
+	@echo "Building libft..."
+	@ar -rsc ${NAME} ${OBJS}
+	@echo "Finished!"
 
-all: 	${LIB}
+all: 	${NAME}
 
 bonus:	${OBJSALL}
-	ar -rsc ${LIB} ${OBJSALL}
-	
+	@ar -rsc ${NAME} ${OBJSALL}
 
 clean:	
-		rm -f ${OBJS}
+	@echo "Cleaning up..."
+	@rm -f ${OBJS}
 
-fclean:	clean;
-		rm -f ${LIB}
+fclean:	clean
+	@rm -f ${NAME}
 
-re:	fclean all
+re:	fclean ${NAME}
 
 .PHONY: all clean fclean re bonus
