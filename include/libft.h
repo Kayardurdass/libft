@@ -6,7 +6,7 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 23:24:27 by uanglade          #+#    #+#             */
-/*   Updated: 2025/03/30 14:16:21 by uanglade         ###   ########.fr       */
+/*   Updated: 2025/05/04 16:11:42 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
-# include "libftmath.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 256
