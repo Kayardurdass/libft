@@ -6,7 +6,7 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 23:24:27 by uanglade          #+#    #+#             */
-/*   Updated: 2025/05/04 16:11:42 by uanglade         ###   ########.fr       */
+/*   Updated: 2025/09/05 06:43:48 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <stdint.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 256
@@ -76,6 +78,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-char	*get_next_line(int fd);
+void	ft_free(void **ptr);
+void	ft_error(char const *file, uint32_t line, char const *msg, ...);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif // !LIBFT_h
