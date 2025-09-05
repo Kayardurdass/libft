@@ -6,7 +6,7 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 23:24:27 by uanglade          #+#    #+#             */
-/*   Updated: 2025/09/05 06:52:43 by uanglade         ###   ########.fr       */
+/*   Updated: 2025/09/05 06:55:09 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void	ft_error(char const *file, uint32_t line, char const *msg, ...);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_realloc(void const *ptr, size_t old_nmemb, size_t new_nmemb,
 					size_t size);
+void	*ft_memset32(void *dst, int32_t a, size_t len);
+void	*ft_memset64(void *dst, int64_t a, size_t len);
 
 #endif // !LIBFT_h
