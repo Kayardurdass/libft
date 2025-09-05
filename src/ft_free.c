@@ -6,14 +6,14 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 06:39:08 by uanglade          #+#    #+#             */
-/*   Updated: 2025/09/05 06:49:42 by uanglade         ###   ########.fr       */
+/*   Updated: 2025/09/05 06:56:44 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free(const void **ptr)
+void	ft_free(void **ptr)
 {
-	free(*(void**)ptr);
+	free(*ptr);
 	*ptr = NULL;
 }
