@@ -6,13 +6,13 @@
 /*   By: uanglade <uanglade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 06:40:18 by uanglade          #+#    #+#             */
-/*   Updated: 2025/09/05 06:43:34 by uanglade         ###   ########.fr       */
+/*   Updated: 2025/09/05 06:51:35 by uanglade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
